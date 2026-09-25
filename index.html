@@ -3,73 +3,225 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0b1220">
-<meta name="description" content="Said Mwinyijuma - MOI Work & Finance Tracker">
-<title>MOI Work & Finance</title><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg">
+<meta name="theme-color" content="#0d1b2a">
+<meta name="description" content="Said Mwinyijuma - MOI Kazi & Fedha Tracker">
+<title>MOI Kazi & Fedha</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f5f7fb;--card:#fff;--text:#101828;--muted:#667085;--line:#e4e7ec;--primary:#155eef;--primary2:#0b4dcc;--green:#12b76a;--orange:#f79009;--red:#f04438;--purple:#7f56d9;--nav:#fff;--shadow:0 8px 28px rgba(16,24,40,.07)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-button,input,select,textarea{font:inherit}button{cursor:pointer}.app{max-width:1200px;margin:auto;padding-bottom:92px}
-header{position:sticky;top:0;z-index:10;background:rgba(245,247,251,.92);backdrop-filter:blur(14px);padding:14px 16px;border-bottom:1px solid rgba(228,231,236,.7)}
-.head{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:10px}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#155eef,#7f56d9);display:grid;place-items:center;color:#fff;font-weight:900}.brand h1{font-size:16px;margin:0}.brand small{color:var(--muted)}
-.iconbtn{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:9px 11px}
-main{padding:16px}.page{display:none}.page.active{display:block}.title{margin:4px 0 3px;font-size:25px}.subtitle{margin:0 0 18px;color:var(--muted)}
-.grid{display:grid;gap:12px}.stats{grid-template-columns:repeat(4,1fr)}.two{grid-template-columns:repeat(2,1fr)}.three{grid-template-columns:repeat(3,1fr)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow)}.stat{min-height:115px}.stat .label{color:var(--muted);font-size:13px}.stat .value{font-size:24px;font-weight:800;margin-top:8px}.blue{color:var(--primary)}.green{color:var(--green)}.orange{color:var(--orange)}.purple{color:var(--purple)}
-.progress{height:12px;background:#eef2f6;border-radius:20px;overflow:hidden}.progress>i{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--purple));border-radius:20px;width:0}
-.actions{display:flex;flex-wrap:wrap;gap:8px}.btn{border:0;border-radius:12px;padding:10px 14px;background:#eef4ff;color:#174ea6;font-weight:700}.btn.primary{background:var(--primary);color:#fff}.btn.green{background:#e9f9f1;color:#087443}.btn.red{background:#fff0ee;color:#b42318}
-.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:22px 0 10px}.sectionhead h3{margin:0}
-.form{display:grid;gap:11px}.row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;font-weight:700}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:11px;padding:10px 11px;background:#fff;outline:none}.field input:focus,.field select:focus{border-color:var(--primary)}
-table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:10px 7px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-size:11px;text-transform:uppercase}.tablewrap{overflow:auto}.pill{display:inline-flex;padding:5px 8px;border-radius:999px;background:#eef4ff;color:#175cd3;font-size:11px;font-weight:800}.pill.green{background:#e9f9f1;color:#067647}.pill.orange{background:#fff6ed;color:#b54708}.pill.red{background:#fff0ee;color:#b42318}
-.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.calhead{font-size:11px;color:var(--muted);text-align:center;font-weight:800}.day{min-height:72px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px;position:relative}.day.muted{opacity:.4}.day .num{font-size:12px;font-weight:800}.day .tag{font-size:9px;margin-top:5px;line-height:1.25}.day.work{border-color:#b2ccff;background:#f8fbff}.day.night{box-shadow:inset 0 0 0 2px #7f56d9}.day.special{box-shadow:inset 0 0 0 2px #f79009}
-.nav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-top:1px solid var(--line);z-index:20}.navin{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr);padding:7px 8px calc(7px + env(safe-area-inset-bottom))}.nav button{border:0;background:none;color:#667085;padding:7px 2px;border-radius:12px;font-size:10px;font-weight:700}.nav button b{display:block;font-size:19px;margin-bottom:2px}.nav button.active{color:var(--primary);background:#eef4ff}
-.modal{display:none;position:fixed;inset:0;background:rgba(16,24,40,.48);z-index:30;padding:16px;align-items:flex-end;justify-content:center}.modal.show{display:flex}.modalbox{width:min(650px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:22px;padding:18px}.close{float:right;border:0;background:#f2f4f7;border-radius:10px;padding:7px}
-.alert{padding:12px 14px;border-radius:14px;margin:12px 0;background:#eef4ff;color:#175cd3;font-size:13px;font-weight:700}.alert.warn{background:#fff6ed;color:#b54708}.alert.ok{background:#e9f9f1;color:#067647}
-.empty{padding:24px;text-align:center;color:var(--muted)}
-@media(max-width:800px){.stats{grid-template-columns:repeat(2,1fr)}.three{grid-template-columns:1fr 1fr}.title{font-size:22px}.day{min-height:66px}}
-@media(max-width:520px){main{padding:12px}.stats,.two,.three,.row{grid-template-columns:1fr}.stat{min-height:auto}.card{padding:13px}.calendar{gap:3px}.day{min-height:58px;padding:5px}.day .tag{font-size:8px}.tablewrap{margin:0 -4px}}
+:root{
+  --bg:#eef2f4;
+  --card:#ffffff;
+  --ink:#0d1b2a;
+  --muted:#67757f;
+  --line:#e3e9ec;
+  --navy:#0d1b2a;
+  --navy2:#16324a;
+  --teal:#0f7c82;
+  --teal-dark:#0a5c61;
+  --tealsoft:#e4f3f2;
+  --gold:#c68a2e;
+  --goldsoft:#fbf1de;
+  --green:#1d9a6c;
+  --greensoft:#e6f7ef;
+  --red:#d64545;
+  --redsoft:#fdeaea;
+  --shadow:0 14px 34px -18px rgba(13,27,42,.35);
+  --shadow-sm:0 4px 14px -8px rgba(13,27,42,.18);
+  --radius:18px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.num{font-family:Sora,Inter,system-ui,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+.app{max-width:1180px;margin:auto;padding-bottom:100px}
+
+header{position:sticky;top:0;z-index:10;background:rgba(238,242,244,.88);backdrop-filter:blur(16px);padding:calc(12px + env(safe-area-inset-top)) 18px 12px;border-bottom:1px solid var(--line)}
+.head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:11px}
+.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(150deg,var(--teal),var(--navy));display:grid;place-items:center;box-shadow:var(--shadow-sm)}
+.logo svg{width:24px;height:24px}
+.brand h1{font-size:16px;margin:0;font-weight:700;letter-spacing:.1px}
+.brand small{color:var(--muted);font-size:12px}
+.iconbtn{border:1px solid var(--line);background:var(--card);border-radius:13px;padding:9px 12px;box-shadow:var(--shadow-sm)}
+
+main{padding:18px}
+.page{display:none}
+.page.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.title{margin:2px 0 3px;font-size:24px;font-weight:800}
+.subtitle{margin:0 0 18px;color:var(--muted);font-size:14px}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 55%,var(--teal-dark) 100%);border-radius:22px;padding:22px 20px;color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.10),transparent 70%)}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;position:relative}
+.hero-label{font-size:12.5px;color:rgba(255,255,255,.72);font-weight:600}
+.hero-amount{font-size:34px;font-weight:800;margin-top:4px;letter-spacing:-.3px}
+.hero-target{text-align:right;font-size:12px;color:rgba(255,255,255,.72)}
+.hero-target b{display:block;font-size:16px;color:#fff;font-weight:700;font-family:Sora}
+.hero-split{display:flex;gap:16px;margin-top:14px;font-size:12.5px;color:rgba(255,255,255,.85);position:relative}
+.hero-split span b{color:#fff;font-family:Sora;font-weight:700}
+.hero-bar{height:10px;background:rgba(255,255,255,.16);border-radius:20px;overflow:hidden;margin-top:14px;position:relative}
+.hero-bar>i{display:block;height:100%;background:linear-gradient(90deg,#e8c25f,#fff);border-radius:20px;width:0;transition:width .4s ease}
+.hero-foot{margin-top:10px;font-size:12px;color:rgba(255,255,255,.78);position:relative}
+
+.alert{padding:12px 14px;border-radius:14px;margin:14px 0 0;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px}
+.alert.info{background:var(--tealsoft);color:var(--teal-dark)}
+.alert.warn{background:var(--goldsoft);color:#8a5f1c}
+.alert.ok{background:var(--greensoft);color:#127a51}
+
+.grid{display:grid;gap:12px}
+.stats3{grid-template-columns:repeat(3,1fr);margin-top:14px}
+.two{grid-template-columns:repeat(2,1fr)}
+.four{grid-template-columns:repeat(4,1fr)}
+
+.flatstat{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:13px 14px}
+.flatstat .fs-top{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);font-weight:600}
+.flatstat .fs-num{font-family:Sora;font-size:19px;font-weight:700;margin-top:6px}
+.flatstat .fs-rate{font-size:11px;color:var(--muted);margin-top:2px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:17px;box-shadow:var(--shadow-sm)}
+.card .label{color:var(--muted);font-size:12.5px;font-weight:600}
+.card h3.num{font-size:20px;margin:8px 0 0}
+
+.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:24px 0 11px}
+.sectionhead h3{margin:0;font-size:16px;font-weight:700}
+
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.btn{border:0;border-radius:12px;padding:10px 15px;background:var(--tealsoft);color:var(--teal-dark);font-weight:700;font-size:13.5px;transition:transform .1s ease}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--teal);color:#fff}
+.btn.dark{background:var(--navy);color:#fff}
+.btn.gold{background:var(--goldsoft);color:#8a5f1c}
+.btn.green{background:var(--greensoft);color:#127a51}
+.btn.red{background:var(--redsoft);color:#a33131}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.btn.sm{padding:7px 10px;font-size:12px;border-radius:9px}
+
+.form{display:grid;gap:12px}
+.row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;font-weight:600}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:#fbfcfd;outline:none;transition:border-color .15s}
+.field input:focus,.field select:focus{border-color:var(--teal);background:#fff}
+.field small{display:block;margin-top:5px;color:var(--muted);font-size:11px}
+
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:11px 8px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-size:11.5px;font-weight:600}
+.tablewrap{overflow:auto}
+.pill{display:inline-flex;padding:5px 9px;border-radius:999px;background:var(--tealsoft);color:var(--teal-dark);font-size:11px;font-weight:700}
+.pill.green{background:var(--greensoft);color:#127a51}
+.pill.gold{background:var(--goldsoft);color:#8a5f1c}
+.pill.red{background:var(--redsoft);color:#a33131}
+
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.calhead{font-size:11px;color:var(--muted);text-align:center;font-weight:700;padding-bottom:2px}
+.day{min-height:72px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:6px;position:relative}
+.day.muted{opacity:0;pointer-events:none}
+.day .num{font-size:12px;font-weight:700;color:var(--muted)}
+.day .tag{font-size:9px;margin-top:5px;line-height:1.3;color:var(--teal-dark);font-weight:600}
+.day.work{border-color:#bfe0dd;background:var(--tealsoft)}
+.day.night{box-shadow:inset 0 0 0 2px var(--navy2)}
+.day.special{box-shadow:inset 0 0 0 2px var(--gold)}
+
+.nav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-top:1px solid var(--line);z-index:20}
+.navin{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr);padding:8px 8px calc(8px + env(safe-area-inset-bottom))}
+.nav button{border:0;background:none;color:var(--muted);padding:7px 2px;border-radius:13px;font-size:10.5px;font-weight:700}
+.nav button b{display:block;font-size:19px;margin-bottom:2px}
+.nav button.active{color:var(--teal-dark);background:var(--tealsoft)}
+
+.modal{display:none;position:fixed;inset:0;background:rgba(13,27,42,.5);z-index:30;padding:16px;align-items:flex-end;justify-content:center}
+.modal.show{display:flex}
+.modalbox{width:min(650px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:24px 24px 18px 18px;padding:20px}
+.modalbox h3{margin-top:2px}
+.close{float:right;border:0;background:#f2f4f7;border-radius:10px;padding:7px 10px;font-weight:700}
+.empty{padding:26px;text-align:center;color:var(--muted);font-size:13px}
+.helper{color:var(--muted);font-size:12.5px;line-height:1.5;margin:0 0 4px}
+
+@media(max-width:800px){.four{grid-template-columns:repeat(2,1fr)}.stats3{grid-template-columns:1fr 1fr 1fr}.title{font-size:21px}.day{min-height:64px}}
+@media(max-width:520px){main{padding:13px}.four,.two,.row{grid-template-columns:1fr}.stats3{grid-template-columns:1fr 1fr 1fr}.card{padding:14px}.calendar{gap:4px}.day{min-height:56px;padding:5px}.day .tag{font-size:8px}.tablewrap{margin:0 -3px}.hero-amount{font-size:28px}}
 </style>
 </head>
 <body>
 <div class="app">
-<header><div class="head"><div class="brand"><div class="logo">SM</div><div><h1>MOI Work & Finance</h1><small>Said Mwinyijuma • Offline First</small></div></div><button class="iconbtn" onclick="openModal('settingsModal')">⚙️</button></div></header>
+<header><div class="head">
+  <div class="brand">
+    <div class="logo"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2-6 4 12 2-6h6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div><h1>MOI Kazi & Fedha</h1><small>Said Mwinyijuma · Ward 2B</small></div>
+  </div>
+  <button class="iconbtn" onclick="openModal('settingsModal')">⚙️</button>
+</div></header>
+
 <main>
 <section id="dashboard" class="page active">
 <h2 class="title">Dashboard</h2><p class="subtitle">Muhtasari wa kazi, allowance na fedha zako.</p>
+
+<div class="hero">
+  <div class="hero-top">
+    <div><div class="hero-label">Allowance ya mwezi (Kazini + Nyumba)</div><div class="hero-amount" id="allowance">TSh 0</div></div>
+    <div class="hero-target">Target<b id="target">TSh 700,000</b></div>
+  </div>
+  <div class="hero-split">
+    <span>Kazini: <b id="workAllowance">TSh 0</b></span>
+    <span>Nyumba: <b id="houseAllowance">TSh 50,000</b></span>
+  </div>
+  <div class="hero-bar"><i id="bar"></i></div>
+  <div class="hero-foot" id="projection"></div>
+</div>
 <div id="targetAlert"></div>
-<div class="grid stats">
-<div class="card stat"><div class="label">Allowance ya mwezi</div><div class="value blue" id="allowance">TSh 0</div></div>
-<div class="card stat"><div class="label">Target</div><div class="value purple" id="target">TSh 700,000</div></div>
-<div class="card stat"><div class="label">Bado kufikia target</div><div class="value orange" id="remaining">TSh 700,000</div></div>
-<div class="card stat"><div class="label">Entries za kazi</div><div class="value green" id="workCount">0</div></div>
+
+<div class="grid stats3">
+<div class="flatstat"><div class="fs-top"><span>⏱️ Overtime</span><span id="otCount">0</span></div><div class="fs-num" id="otTotal">TSh 0</div><div class="fs-rate">Kiwango: <span id="otRate">TSh 13,500</span></div></div>
+<div class="flatstat"><div class="fs-top"><span>🌙 Night</span><span id="nightCount">0</span></div><div class="fs-num" id="nightTotal">TSh 0</div><div class="fs-rate">Kiwango: <span id="nightRate">TSh 15,000</span></div></div>
+<div class="flatstat"><div class="fs-top"><span>📞 Special Call</span><span id="specialCount">0</span></div><div class="fs-num" id="specialTotal">TSh 0</div><div class="fs-rate">Kiwango: <span id="specialRate">TSh 20,000</span></div></div>
 </div>
-<div class="card" style="margin-top:12px"><div style="display:flex;justify-content:space-between;font-weight:800"><span>Progress ya allowance</span><span id="percent">0%</span></div><div class="progress" style="margin-top:10px"><i id="bar"></i></div><div id="projection" style="color:var(--muted);font-size:12px;margin-top:9px"></div></div>
-<div class="grid three" style="margin-top:12px">
-<div class="card"><div class="label">⏱️ Overtime</div><b id="otCount">0</b> × TSh 13,500 = <b id="otTotal">TSh 0</b></div>
-<div class="card"><div class="label">🌙 Night</div><b id="nightCount">0</b> × TSh 15,000 = <b id="nightTotal">TSh 0</b></div>
-<div class="card"><div class="label">📞 Special Call</div><b id="specialCount">0</b> × TSh 20,000 = <b id="specialTotal">TSh 0</b></div>
+
+<div class="sectionhead"><h3>Quick Add</h3></div>
+<div class="actions">
+<button class="btn primary" onclick="openRoster()">＋ Roster</button>
+<button class="btn dark" onclick="quickRoster('Night')">🌙 Night</button>
+<button class="btn gold" onclick="quickRoster('Special Call')">📞 Special Call</button>
+<button class="btn" onclick="openExpense()">🧾 Expense</button>
+<button class="btn" onclick="openDebt()">🤝 Deni</button>
 </div>
-<div class="sectionhead"><h3>Quick Add</h3></div><div class="actions">
-<button class="btn primary" onclick="openRoster()">＋ Roster</button><button class="btn" onclick="quickRoster('Night')">🌙 Night</button><button class="btn" onclick="quickRoster('Special Call')">📞 Special Call</button><button class="btn" onclick="openExpense()">🧾 Expense</button><button class="btn" onclick="openDebt()">🤝 Debt</button>
-</div>
+
 <div class="sectionhead"><h3>Fedha kwa mwezi</h3></div>
-<div class="grid two"><div class="card"><span class="label">Mshahara</span><h3 id="salaryDash">TSh 0</h3></div><div class="card"><span class="label">Matumizi</span><h3 id="expenseDash">TSh 0</h3></div><div class="card"><span class="label">Savings</span><h3 id="savingDash">TSh 0</h3></div><div class="card"><span class="label">Net balance</span><h3 id="balanceDash">TSh 0</h3></div></div>
+<div class="grid four">
+<div class="card"><span class="label">Mshahara</span><h3 class="num" id="salaryDash">TSh 0</h3></div>
+<div class="card"><span class="label">Matumizi</span><h3 class="num" id="expenseDash">TSh 0</h3></div>
+<div class="card"><span class="label">Savings</span><h3 class="num" id="savingDash">TSh 0</h3></div>
+<div class="card"><span class="label">Net balance</span><h3 class="num" id="balanceDash">TSh 0</h3></div>
+</div>
 </section>
 
-<section id="roster" class="page"><h2 class="title">📅 Roster</h2><p class="subtitle">Calendar ya shifts na allowance.</p><div class="actions"><button class="btn primary" onclick="openRoster()">＋ Add shift</button><button class="btn" onclick="go('dashboard')">← Dashboard</button></div><div class="card" style="margin-top:12px"><div class="sectionhead"><button class="btn" onclick="changeMonth(-1)">‹</button><b id="monthTitle"></b><button class="btn" onclick="changeMonth(1)">›</button></div><div class="calendar" id="calendar"></div></div>
+<section id="roster" class="page"><h2 class="title">📅 Roster</h2><p class="subtitle">Calendar ya shifts na allowance.</p>
+<div class="actions"><button class="btn primary" onclick="openRoster()">＋ Add shift</button><button class="btn ghost" onclick="go('dashboard')">← Dashboard</button></div>
+<div class="card" style="margin-top:12px"><div class="sectionhead" style="margin-top:0"><button class="btn ghost sm" onclick="changeMonth(-1)">‹</button><b id="monthTitle"></b><button class="btn ghost sm" onclick="changeMonth(1)">›</button></div><div class="calendar" id="calendar"></div></div>
 <div class="sectionhead"><h3>Entries za mwezi</h3></div><div class="card tablewrap"><table><thead><tr><th>Tarehe</th><th>Shift</th><th>Allowance</th><th></th></tr></thead><tbody id="rosterTable"></tbody></table></div></section>
 
-<section id="money" class="page"><h2 class="title">💰 Money</h2><p class="subtitle">Mshahara, matumizi, savings na investments.</p><div class="actions"><button class="btn primary" onclick="openSalary()">＋ Salary</button><button class="btn" onclick="openExpense()">＋ Expense</button><button class="btn green" onclick="openSaving()">＋ Saving</button><button class="btn" onclick="openInvestment()">＋ Investment</button></div>
-<div class="grid stats" style="margin-top:12px"><div class="card stat"><span class="label">Salary</span><div class="value" id="salaryMoney">TSh 0</div></div><div class="card stat"><span class="label">Expenses</span><div class="value orange" id="expenseMoney">TSh 0</div></div><div class="card stat"><span class="label">Savings</span><div class="value green" id="savingMoney">TSh 0</div></div><div class="card stat"><span class="label">Investments</span><div class="value purple" id="investmentMoney">TSh 0</div></div></div>
-<div class="sectionhead"><h3>Transactions</h3></div><div class="card tablewrap"><table><thead><tr><th>Date</th><th>Type</th><th>Description</th><th>Amount</th><th></th></tr></thead><tbody id="moneyTable"></tbody></table></div></section>
+<section id="money" class="page"><h2 class="title">💰 Money</h2><p class="subtitle">Mshahara, matumizi, savings na investments.</p>
+<div class="actions"><button class="btn primary" onclick="openSalary()">＋ Salary</button><button class="btn" onclick="openExpense()">＋ Expense</button><button class="btn green" onclick="openSaving()">＋ Saving</button><button class="btn gold" onclick="openInvestment()">＋ Investment</button></div>
+<div class="grid four" style="margin-top:12px"><div class="card"><span class="label">Salary</span><h3 class="num" id="salaryMoney">TSh 0</h3></div><div class="card"><span class="label">Expenses</span><h3 class="num" id="expenseMoney">TSh 0</h3></div><div class="card"><span class="label">Savings</span><h3 class="num" id="savingMoney">TSh 0</h3></div><div class="card"><span class="label">Investments</span><h3 class="num" id="investmentMoney">TSh 0</h3></div></div>
+<div class="sectionhead"><h3>Transactions</h3></div><div class="card tablewrap"><table><thead><tr><th>Tarehe</th><th>Aina</th><th>Maelezo</th><th>Kiasi</th><th></th></tr></thead><tbody id="moneyTable"></tbody></table></div></section>
 
-<section id="debts" class="page"><h2 class="title">🤝 Madeni</h2><p class="subtitle">Ninawadai na ninadaiwa — malipo yanaweza kuwa kwa awamu.</p><div class="actions"><button class="btn primary" onclick="openDebt()">＋ Add debt</button></div><div class="grid two" style="margin-top:12px"><div class="card"><span class="label">Ninawadai</span><h3 id="owedToMe">TSh 0</h3></div><div class="card"><span class="label">Ninadaiwa</span><h3 id="iOwe">TSh 0</h3></div></div><div class="sectionhead"><h3>Debt list</h3></div><div class="card tablewrap"><table><thead><tr><th>Mtu</th><th>Aina</th><th>Original</th><th>Paid</th><th>Balance</th><th></th></tr></thead><tbody id="debtTable"></tbody></table></div></section>
+<section id="debts" class="page"><h2 class="title">🤝 Madeni</h2><p class="subtitle">Ninawadai na ninadaiwa — tuma SMS ya kumbusho moja kwa moja.</p>
+<div class="actions"><button class="btn primary" onclick="openDebt()">＋ Add debt</button></div>
+<div class="grid two" style="margin-top:12px"><div class="card"><span class="label">Ninawadai</span><h3 class="num" id="owedToMe">TSh 0</h3></div><div class="card"><span class="label">Ninadaiwa</span><h3 class="num" id="iOwe">TSh 0</h3></div></div>
+<div class="sectionhead"><h3>Debt list</h3></div><div class="card tablewrap"><table><thead><tr><th>Mtu</th><th>Aina</th><th>Balance</th><th></th></tr></thead><tbody id="debtTable"></tbody></table></div></section>
 
-<section id="reports" class="page"><h2 class="title">📊 Reports & Backup</h2><p class="subtitle">Export na backup ya taarifa zako.</p><div class="card"><h3>Export</h3><p style="color:var(--muted);font-size:13px">Export CSV zinazofunguka Excel. Kila sheet inatolewa kama faili lake.</p><div class="actions"><button class="btn primary" onclick="exportCSV('roster')">Roster CSV</button><button class="btn" onclick="exportCSV('money')">Money CSV</button><button class="btn" onclick="exportCSV('debts')">Debts CSV</button><button class="btn" onclick="exportAll()">Export All</button></div></div>
-<div class="card" style="margin-top:12px"><h3>Backup</h3><p style="color:var(--muted);font-size:13px">Hifadhi data yote kama JSON na irudishe baadaye.</p><div class="actions"><button class="btn green" onclick="backup()">⬇️ Backup</button><label class="btn">⬆️ Restore<input type="file" accept=".json" onchange="restore(event)" hidden></label></div></div>
+<section id="reports" class="page"><h2 class="title">📊 Reports & Backup</h2><p class="subtitle">Export na backup ya taarifa zako.</p>
+<div class="card"><h3>Export</h3><p class="helper">Export CSV zinazofunguka Excel. Kila sheet inatolewa kama faili lake.</p><div class="actions"><button class="btn primary" onclick="exportCSV('roster')">Roster CSV</button><button class="btn" onclick="exportCSV('money')">Money CSV</button><button class="btn" onclick="exportCSV('debts')">Debts CSV</button><button class="btn dark" onclick="exportAll()">Export All</button></div></div>
+<div class="card" style="margin-top:12px"><h3>Backup</h3><p class="helper">Hifadhi data yote kama JSON na irudishe baadaye.</p><div class="actions"><button class="btn green" onclick="backup()">⬇️ Backup</button><label class="btn">⬆️ Restore<input type="file" accept=".json" onchange="restore(event)" hidden></label></div></div>
 </section>
 </main>
 </div>
+
 <nav class="nav"><div class="navin">
 <button class="active" data-page="dashboard" onclick="go('dashboard')"><b>⌂</b>Home</button>
 <button data-page="roster" onclick="go('roster')"><b>📅</b>Roster</button>
@@ -79,19 +231,34 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;p
 </div></nav>
 
 <div class="modal" id="rosterModal"><div class="modalbox"><button class="close" onclick="closeModal('rosterModal')">✕</button><h3>Add Roster</h3><form class="form" onsubmit="saveRoster(event)"><div class="row"><div class="field"><label>Date</label><input id="rDate" type="date" required></div><div class="field"><label>Shift</label><select id="rShift"><option>7-5</option><option>Night</option><option>Special Call</option><option>7-5 + Night</option><option>7-5 + Special Call</option><option>Night + Special Call</option><option>7-5 + Night + Special Call</option><option>OFF</option></select></div></div><div class="field"><label>Notes</label><input id="rNote" placeholder="Mfano: Ward / call details"></div><button class="btn primary">Save roster</button></form></div></div>
+
 <div class="modal" id="salaryModal"><div class="modalbox"><button class="close" onclick="closeModal('salaryModal')">✕</button><h3>Add Salary</h3><form class="form" onsubmit="saveMoney(event,'Salary')"><div class="row"><div class="field"><label>Date</label><input id="mDate" type="date" required></div><div class="field"><label>Amount (TSh)</label><input id="mAmount" type="number" min="0" required></div></div><div class="field"><label>Description</label><input id="mDesc" value="Monthly Salary"></div><button class="btn primary">Save salary</button></form></div></div>
+
 <div class="modal" id="expenseModal"><div class="modalbox"><button class="close" onclick="closeModal('expenseModal')">✕</button><h3>Add Expense</h3><form class="form" onsubmit="saveMoney(event,'Expense')"><div class="row"><div class="field"><label>Date</label><input id="eDate" type="date" required></div><div class="field"><label>Amount (TSh)</label><input id="eAmount" type="number" min="0" required></div></div><div class="field"><label>Category / Description</label><input id="eDesc" placeholder="Chakula, usafiri, nyumba..."></div><button class="btn primary">Save expense</button></form></div></div>
+
 <div class="modal" id="savingModal"><div class="modalbox"><button class="close" onclick="closeModal('savingModal')">✕</button><h3>Add Saving</h3><form class="form" onsubmit="saveMoney(event,'Saving')"><div class="row"><div class="field"><label>Date</label><input id="sDate" type="date" required></div><div class="field"><label>Amount (TSh)</label><input id="sAmount" type="number" min="0" required></div></div><div class="field"><label>Goal / Description</label><input id="sDesc" placeholder="Kiwanja, emergency fund..."></div><button class="btn primary">Save saving</button></form></div></div>
+
 <div class="modal" id="investmentModal"><div class="modalbox"><button class="close" onclick="closeModal('investmentModal')">✕</button><h3>Add Investment</h3><form class="form" onsubmit="saveMoney(event,'Investment')"><div class="row"><div class="field"><label>Date</label><input id="iDate" type="date" required></div><div class="field"><label>Amount (TSh)</label><input id="iAmount" type="number" min="0" required></div></div><div class="field"><label>Investment</label><input id="iDesc" placeholder="Business, stock, asset..."></div><button class="btn primary">Save investment</button></form></div></div>
-<div class="modal" id="debtModal"><div class="modalbox"><button class="close" onclick="closeModal('debtModal')">✕</button><h3>Add Debt</h3><form class="form" onsubmit="saveDebt(event)"><div class="row"><div class="field"><label>Person / Source</label><input id="dPerson" required></div><div class="field"><label>Type</label><select id="dType"><option>Ninawadai</option><option>Ninadaiwa</option></select></div></div><div class="row"><div class="field"><label>Original amount</label><input id="dAmount" type="number" min="0" required></div><div class="field"><label>Date</label><input id="dDate" type="date" required></div></div><div class="field"><label>Description</label><input id="dDesc" placeholder="Sababu ya deni"></div><button class="btn primary">Save debt</button></form></div></div>
+
+<div class="modal" id="debtModal"><div class="modalbox"><button class="close" onclick="closeModal('debtModal')">✕</button><h3>Add Debt</h3><form class="form" onsubmit="saveDebt(event)"><div class="row"><div class="field"><label>Person / Source</label><input id="dPerson" required></div><div class="field"><label>Type</label><select id="dType"><option>Ninawadai</option><option>Ninadaiwa</option></select></div></div><div class="row"><div class="field"><label>Original amount</label><input id="dAmount" type="number" min="0" required></div><div class="field"><label>Date</label><input id="dDate" type="date" required></div></div><div class="row"><div class="field"><label>Namba ya simu (kwa SMS)</label><input id="dPhone" type="tel" placeholder="0712 345 678"></div><div class="field"><label>Description</label><input id="dDesc" placeholder="Sababu ya deni"></div></div><button class="btn primary">Save debt</button></form></div></div>
+
 <div class="modal" id="paymentModal"><div class="modalbox"><button class="close" onclick="closeModal('paymentModal')">✕</button><h3>Record Debt Payment</h3><form class="form" onsubmit="savePayment(event)"><input id="pDebtId" type="hidden"><div class="field"><label>Amount paid (TSh)</label><input id="pAmount" type="number" min="1" required></div><div class="field"><label>Date</label><input id="pDate" type="date" required></div><div class="field"><label>Note</label><input id="pNote" placeholder="Awamu ya 1, 2..."></div><button class="btn primary">Save payment</button></form></div></div>
-<div class="modal" id="settingsModal"><div class="modalbox"><button class="close" onclick="closeModal('settingsModal')">✕</button><h3>⚙️ Settings</h3><form class="form" onsubmit="saveSettings(event)"><div class="field"><label>Monthly allowance target</label><input id="setTarget" type="number" min="0"></div><div class="field"><label>Overtime rate</label><input id="setOT" type="number" min="0"></div><div class="field"><label>Night rate</label><input id="setNight" type="number" min="0"></div><div class="field"><label>Special Call rate</label><input id="setSpecial" type="number" min="0"></div><button class="btn primary">Save settings</button></form></div></div>
+
+<div class="modal" id="smsModal"><div class="modalbox"><button class="close" onclick="closeModal('smsModal')">✕</button><h3>📩 Tuma SMS</h3><p class="helper">Hariri ujumbe kama unavyotaka kisha bonyeza Tuma — itafungua app ya SMS ya simu yako.</p><form class="form" onsubmit="sendSms(event)"><div class="field"><label>Namba ya simu</label><input id="smsPhone" type="tel" required></div><div class="field"><label>Ujumbe</label><textarea id="smsBody" rows="5" required></textarea></div><button class="btn primary">📩 Fungua SMS</button></form></div></div>
+
+<div class="modal" id="settingsModal"><div class="modalbox"><button class="close" onclick="closeModal('settingsModal')">✕</button><h3>⚙️ Settings</h3><form class="form" onsubmit="saveSettings(event)">
+<div class="field"><label>Monthly allowance target</label><input id="setTarget" type="number" min="0"></div>
+<div class="field"><label>House allowance (Nyumba) — inajumlishwa kila mwezi</label><input id="setHouse" type="number" min="0"><small>Kiasi hiki kinaongezwa moja kwa moja kwenye allowance ya kila mwezi ili kufikia target.</small></div>
+<div class="row"><div class="field"><label>Overtime rate</label><input id="setOT" type="number" min="0"></div><div class="field"><label>Night rate</label><input id="setNight" type="number" min="0"></div></div>
+<div class="field"><label>Special Call rate</label><input id="setSpecial" type="number" min="0"></div>
+<button class="btn primary">Save settings</button></form></div></div>
 
 <script>
 const KEY='moi_work_finance_v1';
-let db=JSON.parse(localStorage.getItem(KEY)||'null')||{settings:{target:700000,ot:13500,night:15000,special:20000},roster:[],money:[],debts:[]};
+let db=JSON.parse(localStorage.getItem(KEY)||'null')||{settings:{target:700000,house:50000,ot:13500,night:15000,special:20000},roster:[],money:[],debts:[]};
+if(db.settings.house===undefined)db.settings.house=50000;
+db.debts.forEach(d=>{if(d.phone===undefined)d.phone=''});
 let view=new Date();
-const sw=document.createElement('script'); // reserved for future PWA bootstrap
 function persist(){localStorage.setItem(KEY,JSON.stringify(db)); render();}
 function money(n){return 'TSh '+Number(n||0).toLocaleString('en-US')}
 function today(){return new Date().toISOString().slice(0,10)}
@@ -109,10 +276,29 @@ function openSaving(){sDate.value=today();openModal('savingModal')}
 function openInvestment(){iDate.value=today();openModal('investmentModal')}
 function saveMoney(e,type){e.preventDefault();let map={Salary:['mDate','mAmount','mDesc'],Expense:['eDate','eAmount','eDesc'],Saving:['sDate','sAmount','sDesc'],Investment:['iDate','iAmount','iDesc']}[type];db.money.push({id:crypto.randomUUID(),date:document.getElementById(map[0]).value,type,amount:+document.getElementById(map[1]).value,desc:document.getElementById(map[2]).value});closeModal(type==='Salary'?'salaryModal':type==='Expense'?'expenseModal':type==='Saving'?'savingModal':'investmentModal');persist()}
 function openDebt(){dDate.value=today();openModal('debtModal')}
-function saveDebt(e){e.preventDefault();db.debts.push({id:crypto.randomUUID(),person:dPerson.value,type:dType.value,amount:+dAmount.value,date:dDate.value,desc:dDesc.value,payments:[]});closeModal('debtModal');persist()}
+function saveDebt(e){e.preventDefault();db.debts.push({id:crypto.randomUUID(),person:dPerson.value,type:dType.value,amount:+dAmount.value,date:dDate.value,desc:dDesc.value,phone:dPhone.value.trim(),payments:[]});closeModal('debtModal');persist()}
 function payDebt(id){pDebtId.value=id;pDate.value=today();openModal('paymentModal')}
 function savePayment(e){e.preventDefault();let d=db.debts.find(x=>x.id===pDebtId.value);if(!d)return;let paid=d.payments.reduce((a,p)=>a+p.amount,0),amt=+pAmount.value;if(amt>d.amount-paid){alert('Malipo hayawezi kuzidi balance ya deni.');return}d.payments.push({id:crypto.randomUUID(),amount:amt,date:pDate.value,note:pNote.value});closeModal('paymentModal');persist()}
 function del(type,id){if(!confirm('Delete entry hii?'))return;if(type==='roster')db.roster=db.roster.filter(x=>x.id!==id);if(type==='money')db.money=db.money.filter(x=>x.id!==id);if(type==='debt')db.debts=db.debts.filter(x=>x.id!==id);persist()}
+
+let smsDebtId=null;
+function openSms(id){
+  let d=db.debts.find(x=>x.id===id);if(!d)return;smsDebtId=id;
+  let paid=d.payments.reduce((a,p)=>a+p.amount,0),bal=d.amount-paid;
+  let msg=d.type==='Ninawadai'
+    ? `Habari ${d.person}, hii ni kumbusho ya deni la TSh ${bal.toLocaleString('en-US')} tangu ${d.date}. Tafadhali fanya malipo unapoweza. Asante - Said`
+    : `Habari ${d.person}, ninakumbusha kuhusu deni langu la TSh ${bal.toLocaleString('en-US')} tangu ${d.date}. Nitalipa hivi karibuni. Asante - Said`;
+  smsPhone.value=d.phone||'';smsBody.value=msg;openModal('smsModal');
+}
+function sendSms(e){
+  e.preventDefault();
+  let phone=smsPhone.value.trim().replace(/\s+/g,'');
+  if(smsDebtId){let d=db.debts.find(x=>x.id===smsDebtId);if(d&&phone&&d.phone!==phone){d.phone=phone;persist()}}
+  let url=`sms:${phone}?body=${encodeURIComponent(smsBody.value)}`;
+  window.location.href=url;
+  closeModal('smsModal');
+}
+
 function monthKey(d){return d.slice(0,7)}
 function monthRoster(){let k=view.toISOString().slice(0,7);return db.roster.filter(x=>x.date.startsWith(k))}
 function changeMonth(n){view=new Date(view.getFullYear(),view.getMonth()+n,1);renderRoster()}
@@ -122,28 +308,40 @@ function renderRoster(){
  let a=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];calendar.innerHTML=a.map(x=>`<div class="calhead">${x}</div>`).join('');
  for(let i=0;i<first;i++)calendar.innerHTML+=`<div class="day muted"></div>`;
  for(let d=1;d<=days;d++){let ds=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`,rs=db.roster.filter(x=>x.date===ds);let cls='day '+(rs.length?'work':'');if(rs.some(x=>x.shift.includes('Night')))cls+=' night';if(rs.some(x=>x.shift.includes('Special')))cls+=' special';calendar.innerHTML+=`<div class="${cls}" onclick="openRoster('${ds}')"><div class="num">${d}</div>${rs.map(x=>`<div class="tag">${esc(x.shift)}<br><b>${money(rateFor(x.shift))}</b></div>`).join('')}</div>`}
- rosterTable.innerHTML=monthRoster().sort((a,b)=>a.date.localeCompare(b.date)).map(x=>`<tr><td>${x.date}</td><td><span class="pill">${esc(x.shift)}</span></td><td>${money(rateFor(x.shift))}</td><td><button class="btn red" onclick="del('roster','${x.id}')">×</button></td></tr>`).join('')||`<tr><td colspan="4" class="empty">Hakuna entries mwezi huu.</td></tr>`;
+ rosterTable.innerHTML=monthRoster().sort((a,b)=>a.date.localeCompare(b.date)).map(x=>`<tr><td>${x.date}</td><td><span class="pill">${esc(x.shift)}</span></td><td>${money(rateFor(x.shift))}</td><td><button class="btn red sm" onclick="del('roster','${x.id}')">×</button></td></tr>`).join('')||`<tr><td colspan="4" class="empty">Hakuna entries mwezi huu.</td></tr>`;
 }
 function render(){
- let now=today().slice(0,7), rs=db.roster.filter(x=>x.date.startsWith(now)), allowance=rs.reduce((a,x)=>a+rateFor(x.shift),0),target=+db.settings.target, pct=target?Math.min(100,allowance/target*100):0;
- allowanceEl=allowance;document.getElementById('allowance').textContent=money(allowance);document.getElementById('target').textContent=money(target);document.getElementById('remaining').textContent=money(Math.max(0,target-allowance));document.getElementById('workCount').textContent=rs.length;document.getElementById('percent').textContent=pct.toFixed(0)+'%';document.getElementById('bar').style.width=pct+'%';
+ let now=today().slice(0,7), rs=db.roster.filter(x=>x.date.startsWith(now)), workAllowance=rs.reduce((a,x)=>a+rateFor(x.shift),0), house=+db.settings.house||0, allowance=workAllowance+house, target=+db.settings.target, pct=target?Math.min(100,allowance/target*100):0;
+ document.getElementById('allowance').textContent=money(allowance);
+ document.getElementById('workAllowance').textContent=money(workAllowance);
+ document.getElementById('houseAllowance').textContent=money(house);
+ document.getElementById('target').textContent=money(target);
+ document.getElementById('bar').style.width=pct+'%';
  let elapsed=new Date().getDate(),dim=new Date(new Date().getFullYear(),new Date().getMonth()+1,0).getDate(),daily=elapsed?allowance/elapsed:0,proj=Math.round(daily*dim);document.getElementById('projection').textContent=`Projection ya mwezi: ${money(proj)} kwa kasi ya sasa.`;
- targetAlert.innerHTML=allowance>=target?`<div class="alert ok">🎯 Target ya TSh ${target.toLocaleString()} imefikiwa!</div>`:pct>=75?`<div class="alert">🔥 Umefikia ${pct.toFixed(0)}%. Bado ${money(target-allowance)}.</div>`:`<div class="alert warn">📌 Umefikia ${pct.toFixed(0)}% ya target. Bado ${money(target-allowance)}.</div>`;
- let ot=rs.filter(x=>x.shift.includes('7-5')).length,ni=rs.filter(x=>x.shift.includes('Night')).length,sp=rs.filter(x=>x.shift.includes('Special')).length;otCount.textContent=ot;nightCount.textContent=ni;specialCount.textContent=sp;otTotal.textContent=money(ot*db.settings.ot);nightTotal.textContent=money(ni*db.settings.night);specialTotal.textContent=money(sp*db.settings.special);
+ targetAlert.innerHTML=allowance>=target?`<div class="alert ok">🎯 Target ya ${money(target)} imefikiwa!</div>`:pct>=75?`<div class="alert warn">🔥 Umefikia ${pct.toFixed(0)}%. Bado ${money(target-allowance)}.</div>`:`<div class="alert info">📌 Umefikia ${pct.toFixed(0)}% ya target. Bado ${money(target-allowance)}.</div>`;
+ let ot=rs.filter(x=>x.shift.includes('7-5')).length,ni=rs.filter(x=>x.shift.includes('Night')).length,sp=rs.filter(x=>x.shift.includes('Special')).length;
+ otCount.textContent=ot;nightCount.textContent=ni;specialCount.textContent=sp;
+ otTotal.textContent=money(ot*db.settings.ot);nightTotal.textContent=money(ni*db.settings.night);specialTotal.textContent=money(sp*db.settings.special);
+ otRate.textContent=money(db.settings.ot);nightRate.textContent=money(db.settings.night);specialRate.textContent=money(db.settings.special);
  let salary=db.money.filter(x=>x.type==='Salary'&&x.date.startsWith(now)).reduce((a,x)=>a+x.amount,0),exp=db.money.filter(x=>x.type==='Expense'&&x.date.startsWith(now)).reduce((a,x)=>a+x.amount,0),sav=db.money.filter(x=>x.type==='Saving'&&x.date.startsWith(now)).reduce((a,x)=>a+x.amount,0),inv=db.money.filter(x=>x.type==='Investment'&&x.date.startsWith(now)).reduce((a,x)=>a+x.amount,0),bal=salary+allowance-exp-sav-inv;
  ['salaryDash','salaryMoney'].forEach(id=>document.getElementById(id).textContent=money(salary));['expenseDash','expenseMoney'].forEach(id=>document.getElementById(id).textContent=money(exp));savingDash.textContent=money(sav);savingMoney.textContent=money(sav);investmentMoney.textContent=money(inv);balanceDash.textContent=money(bal);
- moneyTable.innerHTML=db.money.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(x=>`<tr><td>${x.date}</td><td><span class="pill">${x.type}</span></td><td>${esc(x.desc)}</td><td>${money(x.amount)}</td><td><button class="btn red" onclick="del('money','${x.id}')">×</button></td></tr>`).join('')||`<tr><td colspan="5" class="empty">Hakuna transactions.</td></tr>`;
+ moneyTable.innerHTML=db.money.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(x=>`<tr><td>${x.date}</td><td><span class="pill">${x.type}</span></td><td>${esc(x.desc)}</td><td>${money(x.amount)}</td><td><button class="btn red sm" onclick="del('money','${x.id}')">×</button></td></tr>`).join('')||`<tr><td colspan="5" class="empty">Hakuna transactions.</td></tr>`;
  let owed=db.debts.filter(x=>x.type==='Ninawadai').reduce((a,d)=>a+d.amount-d.payments.reduce((s,p)=>s+p.amount,0),0),owe=db.debts.filter(x=>x.type==='Ninadaiwa').reduce((a,d)=>a+d.amount-d.payments.reduce((s,p)=>s+p.amount,0),0);owedToMe.textContent=money(owed);iOwe.textContent=money(owe);
- debtTable.innerHTML=db.debts.map(d=>{let paid=d.payments.reduce((a,p)=>a+p.amount,0),bal=d.amount-paid;return `<tr><td>${esc(d.person)}</td><td><span class="pill ${d.type==='Ninadaiwa'?'red':'green'}">${d.type}</span></td><td>${money(d.amount)}</td><td>${money(paid)}</td><td><b>${money(bal)}</b></td><td>${bal>0?`<button class="btn" onclick="payDebt('${d.id}')">+ Awamu</button>`:''} <button class="btn red" onclick="del('debt','${d.id}')">×</button></td></tr>`}).join('')||`<tr><td colspan="6" class="empty">Hakuna madeni.</td></tr>`;
+ debtTable.innerHTML=db.debts.map(d=>{let paid=d.payments.reduce((a,p)=>a+p.amount,0),bal=d.amount-paid;return `<tr><td>${esc(d.person)}${d.phone?`<br><small style="color:var(--muted)">${esc(d.phone)}</small>`:''}</td><td><span class="pill ${d.type==='Ninadaiwa'?'red':'green'}">${d.type}</span></td><td><b>${money(bal)}</b><br><small style="color:var(--muted)">ya ${money(d.amount)}</small></td><td style="white-space:nowrap">${bal>0?`<button class="btn sm" onclick="payDebt('${d.id}')">+ Awamu</button> <button class="btn gold sm" onclick="openSms('${d.id}')">📩 SMS</button>`:''} <button class="btn red sm" onclick="del('debt','${d.id}')">×</button></td></tr>`}).join('')||`<tr><td colspan="4" class="empty">Hakuna madeni.</td></tr>`;
  renderRoster();
 }
-function saveSettings(e){e.preventDefault();db.settings={target:+setTarget.value,ot:+setOT.value,night:+setNight.value,special:+setSpecial.value};closeModal('settingsModal');persist()}
-function exportCSV(type){let rows,fn;if(type==='roster'){rows=[['Date','Shift','Allowance','Notes'],...db.roster.map(x=>[x.date,x.shift,rateFor(x.shift),x.note])];fn='MOI_Roster.csv'}else if(type==='money'){rows=[['Date','Type','Description','Amount'],...db.money.map(x=>[x.date,x.type,x.desc,x.amount])];fn='MOI_Money.csv'}else{rows=[['Person','Type','Original','Paid','Balance','Date','Description'],...db.debts.map(d=>{let p=d.payments.reduce((a,x)=>a+x.amount,0);return[d.person,d.type,d.amount,p,d.amount-p,d.date,d.desc]})];fn='MOI_Debts.csv'}downloadCSV(rows,fn)}
+function saveSettings(e){e.preventDefault();db.settings={target:+setTarget.value,house:+setHouse.value,ot:+setOT.value,night:+setNight.value,special:+setSpecial.value};closeModal('settingsModal');persist()}
+function exportCSV(type){let rows,fn;if(type==='roster'){rows=[['Date','Shift','Allowance','Notes'],...db.roster.map(x=>[x.date,x.shift,rateFor(x.shift),x.note])];fn='MOI_Roster.csv'}else if(type==='money'){rows=[['Date','Type','Description','Amount'],...db.money.map(x=>[x.date,x.type,x.desc,x.amount])];fn='MOI_Money.csv'}else{rows=[['Person','Phone','Type','Original','Paid','Balance','Date','Description'],...db.debts.map(d=>{let p=d.payments.reduce((a,x)=>a+x.amount,0);return[d.person,d.phone,d.type,d.amount,p,d.amount-p,d.date,d.desc]})];fn='MOI_Debts.csv'}downloadCSV(rows,fn)}
 function downloadCSV(rows,fn){let csv=rows.map(r=>r.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(',')).join('\n');let blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fn;a.click();URL.revokeObjectURL(a.href)}
 function exportAll(){exportCSV('roster');setTimeout(()=>exportCSV('money'),300);setTimeout(()=>exportCSV('debts'),600)}
 function backup(){let blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='MOI_Work_Finance_Backup.json';a.click();URL.revokeObjectURL(a.href)}
-function restore(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!x.settings||!x.roster||!x.money||!x.debts)throw 0;db=x;persist();alert('Restore imefanikiwa.')}catch{alert('Backup si sahihi.')}};r.readAsText(f)}
-document.getElementById('setTarget').value=db.settings.target;document.getElementById('setOT').value=db.settings.ot;document.getElementById('setNight').value=db.settings.night;document.getElementById('setSpecial').value=db.settings.special;
+function restore(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!x.settings||!x.roster||!x.money||!x.debts)throw 0;if(x.settings.house===undefined)x.settings.house=50000;db=x;persist();alert('Restore imefanikiwa.')}catch{alert('Backup si sahihi.')}};r.readAsText(f)}
+document.getElementById('setTarget').value=db.settings.target;
+document.getElementById('setHouse').value=db.settings.house;
+document.getElementById('setOT').value=db.settings.ot;
+document.getElementById('setNight').value=db.settings.night;
+document.getElementById('setSpecial').value=db.settings.special;
 render();
-</script><script>if("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js").catch(()=>{});</script>
+</script>
+<script>if("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js").catch(()=>{});</script>
 </body></html>
