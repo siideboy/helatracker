@@ -175,6 +175,7 @@ th{color:var(--muted);font-size:11.5px;font-weight:600}
   <div class="hero-foot" id="projection"></div>
 </div>
 <div id="targetAlert"></div>
+<div id="restorePrompt"></div>
 
 <div class="grid stats3">
 <div class="flatstat"><div class="fs-top"><span>⏱️ Overtime</span><span id="otCount">0</span></div><div class="fs-num" id="otTotal">TSh 0</div><div class="fs-rate">Kiwango: <span id="otRate">TSh 13,500</span></div></div>
@@ -319,6 +320,13 @@ function render(){
  document.getElementById('bar').style.width=pct+'%';
  let elapsed=new Date().getDate(),dim=new Date(new Date().getFullYear(),new Date().getMonth()+1,0).getDate(),daily=elapsed?allowance/elapsed:0,proj=Math.round(daily*dim);document.getElementById('projection').textContent=`Projection ya mwezi: ${money(proj)} kwa kasi ya sasa.`;
  targetAlert.innerHTML=allowance>=target?`<div class="alert ok">🎯 Target ya ${money(target)} imefikiwa!</div>`:pct>=75?`<div class="alert warn">🔥 Umefikia ${pct.toFixed(0)}%. Bado ${money(target-allowance)}.</div>`:`<div class="alert info">📌 Umefikia ${pct.toFixed(0)}% ya target. Bado ${money(target-allowance)}.</div>`;
+ let isEmpty=db.roster.length===0&&db.money.length===0&&db.debts.length===0;
+ restorePrompt.innerHTML=isEmpty?`<div class="card" style="margin-top:14px;border:1.5px dashed var(--teal);background:var(--tealsoft)">
+   <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+     <div><b style="font-family:Sora">Hakuna data bado</b><p class="helper" style="margin:4px 0 0">Kama una faili la awali la backup (.json), lileta hapa kuirejesha. Vinginevyo endelea kuongeza entries zako.</p></div>
+     <label class="btn primary" style="white-space:nowrap">⬆️ Leta Backup<input type="file" accept=".json" onchange="restore(event)" hidden></label>
+   </div>
+ </div>`:'';
  let ot=rs.filter(x=>x.shift.includes('7-5')).length,ni=rs.filter(x=>x.shift.includes('Night')).length,sp=rs.filter(x=>x.shift.includes('Special')).length;
  otCount.textContent=ot;nightCount.textContent=ni;specialCount.textContent=sp;
  otTotal.textContent=money(ot*db.settings.ot);nightTotal.textContent=money(ni*db.settings.night);specialTotal.textContent=money(sp*db.settings.special);
